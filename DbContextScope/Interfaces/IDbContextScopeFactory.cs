@@ -59,6 +59,11 @@ namespace EntityFrameworkCore.DbContextScope {
         IDbContextScope CreateWithTransaction(IsolationLevel isolationLevel);
 
         /// <summary>
+        /// 
+        /// </summary>
+        IDbContextScope CreateWithTransaction(IsolationLevel isolationLevel, DbContextScopeOption joiningOption = DbContextScopeOption.JoinExisting);
+
+        /// <summary>
         /// Forces the creation of a new ambient read-only DbContextScope (i.e. does not
         /// join the ambient scope if there is one) and wraps all DbContext instances
         /// created within that scope in an explicit database transaction with 

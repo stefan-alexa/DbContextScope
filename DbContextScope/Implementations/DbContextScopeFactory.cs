@@ -39,6 +39,14 @@ namespace EntityFrameworkCore.DbContextScope {
                 dbContextFactory: _dbContextFactory);
         }
 
+        public IDbContextScope CreateWithTransaction(IsolationLevel isolationLevel, DbContextScopeOption joiningOption) {
+            return new DbContextScope(
+                joiningOption: joiningOption,
+                readOnly: false,
+                isolationLevel: isolationLevel,
+                dbContextFactory: _dbContextFactory);
+        }
+
         public IDbContextReadOnlyScope CreateReadOnlyWithTransaction(IsolationLevel isolationLevel) {
             return new DbContextReadOnlyScope(
                 joiningOption: DbContextScopeOption.ForceCreateNew,
